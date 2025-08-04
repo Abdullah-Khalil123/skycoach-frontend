@@ -52,7 +52,7 @@ export default function MostWantedOffers() {
     <section className="border-secondary-foreground border-[1px] rounded-3xl p-6 md:p-10 text-white mt-8">
       <h2 className="text-3xl font-semibold mb-6">Most-wanted offers</h2>
 
-      <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(160px,1fr))]">
+      <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(130px,1fr))]">
         {offers.map((offer, idx) => (
           <div
             key={idx}

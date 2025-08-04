@@ -34,13 +34,13 @@ const cards = [
 
 export default function HotNowSection() {
   return (
-    <div className="rounded-[32px] mt-8 p-8 md:p-8 text-white relative overflow-hidden">
+    <div className="md:rounded-[32px] mt-8 md:p-8 text-white relative overflow-hidden">
       <div
         className="absolute -bottom-64 -left-64 w-[800px] h-[800px] rounded-full 
                bg-[radial-gradient(circle,_rgba(91,53,252,0.4)_50%,_transparent_100%)]
                blur-3xl pointer-events-none -z-10 hidden md:block"
       />
-      <div className="bg-secondary absolute w-full h-full top-0 left-0 -z-20" />
+      <div className="md:bg-secondary absolute w-full h-full top-0 left-0 -z-20" />
       <div className="flex font-semibold justify-between items-center mb-6">
         <h2 className="text-4xl">Hot right now</h2>
         <button className="text-sm flex items-center gap-1 bg-[#2a2b38] px-4 py-1.5 rounded-md">
@@ -52,10 +52,10 @@ export default function HotNowSection() {
         {cards.map((card, i) => (
           <div
             key={i}
-            className="bg-black font-semibold rounded-xl overflow-hidden flex flex-col justify-between cursor-pointer"
+            className="bg-secondary md:bg-black font-semibold rounded-xl overflow-hidden flex flex-col justify-between cursor-pointer"
           >
             <div className="h-36 flex items-center justify-center relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary md:from-black to-transparent z-10" />
 
               {/* Game icon */}
               <div className="absolute top-0 left-0">
@@ -73,7 +73,7 @@ export default function HotNowSection() {
               </div>
             </div>
             <div className="px-4 pb-4">
-              <h2 className="text-xl font-semibold mb-1">{card.title}</h2>
+              <h2 className="text-2xl font-semibold mb-1">{card.title}</h2>
               <ul className="text-sm text-white space-y-1">
                 {card.features.map((f, idx) => (
                   <li

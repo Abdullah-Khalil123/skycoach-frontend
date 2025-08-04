@@ -8,45 +8,45 @@ const games = [
   'League of Legends',
   'Valorant',
   'FIFA 23',
+  'League of Legends',
+  'Destiny 2',
   'Call of Duty',
+  'Genshin Impact',
+  'Wow',
+  'Destiny 2',
+  'Apex Legends',
+  'League of Legends',
   'Genshin Impact',
 
   'Wow',
   'Destiny 2',
   'Apex Legends',
+  'Apex Legends',
+  'League of Legends',
+  'Wow',
+  'Destiny 2',
+  'FIFA 23',
   'League of Legends',
   'Valorant',
   'FIFA 23',
+  'Valorant',
+  'Call of Duty',
+  'Wow',
   'Call of Duty',
   'Genshin Impact',
+  'Valorant',
+  'Call of Duty',
+  'FIFA 23',
   'Wow',
   'Destiny 2',
   'Apex Legends',
+  'Apex Legends',
   'League of Legends',
+  'Call of Duty',
+  'Genshin Impact',
   'Valorant',
   'FIFA 23',
-  'Call of Duty',
   'Genshin Impact',
-  'Wow',
-  'Destiny 2',
-  'Apex Legends',
-  'League of Legends',
-  'Valorant',
-  'FIFA 23',
-  'Call of Duty',
-  'Genshin Impact',
-  'Wow',
-  'Destiny 2',
-  'Apex Legends',
-  'League of Legends',
-  'Valorant',
-  'FIFA 23',
-  'Call of Duty',
-  'Genshin Impact',
-  'Wow',
-  'Destiny 2',
-  'Apex Legends',
-  'League of Legends',
   'Valorant',
   'FIFA 23',
   'Call of Duty',
@@ -62,9 +62,12 @@ const games = [
 ];
 
 export default function AllGames({ showAll }: { showAll: boolean }) {
+  const maxGamesToShow = 35;
   const visibleGames = showAll
     ? games
-    : games.slice(0, Math.max(games.length / 2, 40));
+    : games.length > maxGamesToShow
+    ? games.slice(0, maxGamesToShow)
+    : games;
 
   return (
     <div>
@@ -77,7 +80,11 @@ export default function AllGames({ showAll }: { showAll: boolean }) {
           <div className="absolute bottom-0 left-0 right-0 h-50 bg-gradient-to-t from-secondary to-transparent pointer-events-none z-10" />
         )}
 
-        <div className="flex flex-wrap gap-4 mt-4 relative z-0">
+        <div
+          className={`flex flex-wrap gap-4 mt-4 relative z-0 ${
+            showAll ? 'max-h-max' : 'max-h-64'
+          } md:max-h-max overflow-hidden`}
+        >
           {visibleGames.map((game, index) => (
             <Link
               href={`${game.toLowerCase().replace(/\s+/g, '-')}`}

@@ -14,7 +14,7 @@ import ChooseGameButton from './ChooseGameButton';
 
 const NavBar = () => {
   return (
-    <div className="h-24 flex items-center justify-between px-12">
+    <div className="h-24 flex items-center justify-between px-margin">
       {/* Small screen: Left */}
       <div className="flex items-center md:hidden">
         <TextSearchIcon />

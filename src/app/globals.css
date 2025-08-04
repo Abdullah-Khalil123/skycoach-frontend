@@ -42,6 +42,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --spacing-margin: var(--screen-padding);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -87,6 +89,8 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* CUSTOM PROPERTIES */
+
+  --screen-padding: 16px;
 }
 
 .dark {
@@ -151,5 +155,11 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  :root {
+    --screen-padding: 8px;
   }
 }
