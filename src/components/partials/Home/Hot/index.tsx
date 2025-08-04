@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+import GameCard from '@/components/custom/GameCard';
 
 const cards = [
   {
@@ -48,57 +48,9 @@ export default function HotNowSection() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {cards.map((card, i) => (
-          <div
-            key={i}
-            className="bg-secondary md:bg-black font-semibold rounded-xl overflow-hidden flex flex-col justify-between cursor-pointer"
-          >
-            <div className="h-36 flex items-center justify-center relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary md:from-black to-transparent z-10" />
-
-              {/* Game icon */}
-              <div className="absolute top-0 left-0">
-                <Image src={card.icon} alt="icon" width={40} height={40} />
-              </div>
-              {/* Main image or placeholder */}
-              <div className="relative text-white text-xl w-full h-full">
-                {card.title}
-                <Image
-                  alt="game-image"
-                  src={'/bg.jpg'}
-                  fill
-                  objectFit="cover"
-                />
-              </div>
-            </div>
-            <div className="px-4 pb-4">
-              <h2 className="text-2xl font-semibold mb-1">{card.title}</h2>
-              <ul className="text-sm text-white space-y-1">
-                {card.features.map((f, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-start gap-2 text-green-400"
-                  >
-                    <span>•</span>
-                    <span className="text-white">{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-4 flex justify-between items-center">
-                <div>
-                  <div className="text-xl font-semibold">
-                    {card.price.split('.')[0]}
-                    <sup>{card.price.split('.')[1]}</sup>
-                  </div>
-                </div>
-                <button className="bg-primary hover:bg-[#7f60ff] text-white rounded-md px-4 py-1.5 text-sm font-medium">
-                  {card.button}
-                </button>
-              </div>
-            </div>
-          </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {cards.map((card, idx) => (
+          <GameCard card={card} key={idx} />
         ))}
       </div>
     </div>
