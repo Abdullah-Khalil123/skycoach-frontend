@@ -139,10 +139,10 @@ const FooterLinks = () => {
     <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(200px,1fr))] mt-8">
       {footerLink.map((section, index) => (
         <div key={index} className="mb-6">
-          <h3 className="text-xl font-semibold mb-2">{section.title}</h3>
-          <ul className="text-secondary-text font-semibold ">
+          <h3 className="text-lg mb-2">{section.title}</h3>
+          <ul className="text-secondary-text text-xs">
             {section.links.slice(0, 7).map((link, idx) => (
-              <li key={idx}>
+              <li key={idx} className="mb-2">
                 <Link
                   href={link.toLowerCase().replace(' ', '-').toLowerCase()}
                   key={idx}

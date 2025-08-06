@@ -21,13 +21,13 @@ const items = [
 
 const CountsSection = () => {
   return (
-    <div className="font-semibold mt-8 grid gap-4 grid-cols-2 lg:grid-cols-4">
+    <div className=" mt-8 grid gap-4 grid-cols-2 lg:grid-cols-4">
       {items.map((item, index) => (
         <div
           key={index}
           className="rounded-3xl border border-secondary-foreground p-4 w-full"
         >
-          <h3 className="text-3xl ">{item.count}</h3>
+          <h3 className="text-3xl">{item.count}</h3>
           <p>{item.title}</p>
         </div>
       ))}

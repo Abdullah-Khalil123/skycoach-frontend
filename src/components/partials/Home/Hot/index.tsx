@@ -41,7 +41,7 @@ export default function HotNowSection() {
                blur-3xl pointer-events-none -z-10 hidden md:block"
       />
       <div className="md:bg-secondary absolute w-full h-full top-0 left-0 -z-20" />
-      <div className="flex font-semibold justify-between items-center mb-6">
+      <div className="flex tracking-tighter justify-between items-center mb-6">
         <h2 className="text-4xl">Hot right now</h2>
         <button className="text-sm flex items-center gap-1 bg-[#2a2b38] px-4 py-1.5 rounded-md">
           Shuffle <span className="rotate-180">↻</span>

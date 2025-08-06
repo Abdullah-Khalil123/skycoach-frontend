@@ -6,17 +6,19 @@ import MostWantedOffers from './MostWanted';
 import GiveAwaySection from './GiveAway';
 import ReviewSection from './Reviews';
 import CountsSection from './Counts';
+import BoostYouSection from './Boost';
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
       <HotNowSection />
+      <BoostYouSection />
       <CountsSection />
       <ReviewSection />
       <AllGames />
-      <GiveAwaySection />
       <MostWantedOffers />
+      <GiveAwaySection />
     </div>
   );
 };

@@ -18,7 +18,7 @@ const GameCard = ({
   return (
     <div
       className={cn(
-        `bg-secondary font-semibold rounded-xl overflow-hidden flex flex-col justify-between cursor-pointer`,
+        `bg-secondary rounded-xl overflow-hidden flex flex-col justify-between cursor-pointer`,
         changeColors ? 'md:bg-black' : 'bg-secondary'
       )}
     >
@@ -41,10 +41,8 @@ const GameCard = ({
         </div>
       </div>
       <div className="px-4 pb-4">
-        <h2 className="text-2xl font-semibold tracking-tighter mb-1">
-          {card.title}
-        </h2>
-        <ul className="text-sm text-white space-y-1">
+        <h2 className="text-2xl tracking-tighter mb-1">{card.title}</h2>
+        <ul className="text-xs text-white space-y-1">
           {card.features.map((f, idx) => (
             <li key={idx} className="flex items-start gap-2 text-green-400">
               <span>•</span>

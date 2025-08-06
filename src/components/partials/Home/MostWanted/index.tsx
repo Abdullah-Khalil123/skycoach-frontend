@@ -50,7 +50,7 @@ const offers = [
 export default function MostWantedOffers() {
   return (
     <section className="border-secondary-foreground border-[1px] rounded-3xl p-6 md:p-10 text-white mt-8">
-      <h2 className="text-3xl font-semibold mb-6">Most-wanted offers</h2>
+      <h2 className="text-3xl mb-6">Most-wanted offers</h2>
 
       <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(130px,1fr))]">
         {offers.map((offer, idx) => (
@@ -66,10 +66,10 @@ export default function MostWantedOffers() {
               height={24}
               className="mb-2"
             />
-            <div className="text-sm font-medium leading-snug line-clamp-2">
+            <div className="text-xs leading-snug line-clamp-2">
               {offer.title}
             </div>
-            <div className="mt-2 tracking-tighter text-xl font-bold text-secondary-text">
+            <div className="mt-2 tracking-tighter font-bold text-secondary-text">
               {offer.price}
             </div>
           </div>

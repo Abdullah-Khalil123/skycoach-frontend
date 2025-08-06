@@ -7,10 +7,10 @@ const GiveAwaySection = () => {
   return (
     <div className="flex flex-col md:flex md:flex-row items-center md:justify-between bg-secondary px-8 pt-4 rounded-3xl">
       <div className="md:w-1/2 py-6">
-        <h2 className="text-3xl font-semibold mb-2">
+        <h2 className="text-2xl font-semibold tracking-tight mb-2">
           Memes, tips, Giveaways & more
         </h2>
-        <p>Welcome to the squad</p>
+        <p className="text-xs">Welcome to the squad</p>
 
         <div className="flex gap-4 mt-4">
           <Link href={'insta'}>

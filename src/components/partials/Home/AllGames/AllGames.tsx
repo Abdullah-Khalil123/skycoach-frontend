@@ -71,7 +71,7 @@ export default function AllGames({ showAll }: { showAll: boolean }) {
 
   return (
     <div>
-      <h1 className="text-4xl font-semibold mb-4">
+      <h1 className="text-4xl mb-4">
         Discover all {games.length} games on Skycoach
       </h1>
 
@@ -91,7 +91,7 @@ export default function AllGames({ showAll }: { showAll: boolean }) {
               key={index}
               className="flex gap-2 bg-secondary-foreground px-4 py-2 rounded-md
               hover:bg-secondary-foreground transition-colors
-              cursor-pointer font-semibold"
+              cursor-pointer text-sm text-secondary-text"
             >
               <Image src="/globe.svg" alt="game-logo" width={20} height={20} />
               {game}
