@@ -26,14 +26,14 @@ const BoostYouSection = () => {
           <div className="mb-2" />
           <p>
             We speak your language and know that gaming is more than just a
-            hobby—it's a passion. Your success fuels our growth, and we're here
-            to help you achieve more in games.
+            hobby—it&apos;s a passion. Your success fuels our growth, and
+            we&apos;re here to help you achieve more in games.
           </p>
           <div className="mb-2" />
           <p>
             What boosts you in a game shapes you as a player. Every gaming
-            achievement with Skycoach unlocks your potential. We're here to help
-            you grow and reach new heights.
+            achievement with Skycoach unlocks your potential. We&apos;re here to
+            help you grow and reach new heights.
           </p>
         </div>
       </div>

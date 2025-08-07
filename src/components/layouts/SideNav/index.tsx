@@ -12,7 +12,7 @@ const links = [
 
 const SideNav = () => {
   return (
-    <div className="min-w-64 h-screen text-white p-4 hidden lg:block">
+    <div className="min-w-64 h-screen text-white p-4 hidden lg:block sticky top-0">
       <h3 className="text-sm mb-4 font-bold text-secondary-text">
         CALL OF DUTY
       </h3>

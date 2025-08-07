@@ -28,7 +28,7 @@ const ReviewSection = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   return (
-    <section className="mt-8 md:bg-secondary p-8 rounded-4xl">
+    <section className="mt-8 md:bg-secondary rounded-4xl md:p-8">
       {/* Header with Navigation */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-semibold text-3xl tracking-tight">

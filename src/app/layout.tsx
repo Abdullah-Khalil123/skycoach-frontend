@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${skelzl.className} antialiased max-w-[1730px] mx-auto`}
+        className={`${geistSans.variable} ${geistMono.variable} ${skelzl.className} antialiased max-w-[1730px] mx-auto pt-18 md:pt-0`}
       >
         <ReactQueryProvider>
           <NavBar />

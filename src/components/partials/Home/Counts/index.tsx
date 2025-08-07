@@ -21,7 +21,7 @@ const items = [
 
 const CountsSection = () => {
   return (
-    <div className=" mt-8 grid gap-4 grid-cols-2 lg:grid-cols-4">
+    <div className="mt-8 grid gap-4 grid-cols-2 lg:grid-cols-4">
       {items.map((item, index) => (
         <div
           key={index}

@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import {
   TextSearchIcon,
@@ -9,15 +10,26 @@ import {
   Dot,
   ChevronDown,
   LayoutGrid,
+  X as Cross,
 } from 'lucide-react';
 import ChooseGameButton from './ChooseGameButton';
+import NavContent from './NavContent';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const NavBar = () => {
+  const [show, setShow] = useState(false);
+  console.log(show);
+
   return (
-    <div className="h-24 flex items-center justify-between px-margin">
+    <div className="h-14 md:h-24 flex items-center justify-between px-margin fixed md:static top-0 left-0 right-0 bg-black z-50">
       {/* Small screen: Left */}
-      <div className="flex items-center md:hidden">
-        <TextSearchIcon />
+      <div
+        className="flex items-center md:hidden w-10"
+        onClick={() => {
+          setShow((prev) => !prev);
+        }}
+      >
+        {!show && <TextSearchIcon />}
       </div>
 
       {/* Medium+ screen: Left section */}
@@ -61,8 +73,29 @@ const NavBar = () => {
 
       {/* Small screen: Right */}
       <div className="md:hidden">
-        <User />
+        {show ? (
+          <Cross
+            onClick={() => {
+              setShow(false);
+            }}
+          />
+        ) : (
+          <User />
+        )}
       </div>
+      <AnimatePresence>
+        {show && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-14 left-0 right-0 z-40 bg-black"
+          >
+            <NavContent />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

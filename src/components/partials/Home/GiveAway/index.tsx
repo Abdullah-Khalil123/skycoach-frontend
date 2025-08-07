@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const GiveAwaySection = () => {
   return (
-    <div className="flex flex-col md:flex md:flex-row items-center md:justify-between bg-secondary px-8 pt-4 rounded-3xl">
+    <div className="flex mt-8 flex-col md:flex md:flex-row items-center md:justify-between bg-secondary px-8 pt-4 rounded-3xl">
       <div className="md:w-1/2 py-6">
         <h2 className="text-2xl font-semibold tracking-tight mb-2">
           Memes, tips, Giveaways & more

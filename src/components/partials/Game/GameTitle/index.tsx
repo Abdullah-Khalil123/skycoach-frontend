@@ -4,7 +4,7 @@ import React from 'react';
 const GameViewHeader = () => {
   return (
     <div className="flex justify-between items-center">
-      <h1 className="font-semibold text-4xl">
+      <h1 className="md:font-semibold text-3xl md:text-4xl">
         Apex Legends Boosting and Coaching Services
       </h1>
       <CustomButton />

@@ -2,6 +2,9 @@ import React from 'react';
 import ReviewSection from '../Home/Reviews';
 import GameViewHeader from './GameTitle';
 import GameRow from './GameRow';
+import ServiceDetail from './ServiceDetail';
+import { blog } from '@/utils/consts';
+import GiveAway from '../Home/GiveAway';
 
 const data = [
   {
@@ -86,15 +89,23 @@ const data3 = [
   },
 ];
 
+const games = [data, data2, data3];
+
+const headings = ['Hot Offers', 'Popular Services', 'New Arrivals'];
+
 const GameViewPage = () => {
   return (
-    <div>
-      <GameViewHeader />
-      <GameRow data={data} title="🔥 Hot Offers" />
-      <GameRow data={data2} title="Leveling" />
-      <GameRow data={data3} title="💥Popular This Week" />
-      <ReviewSection />
-    </div>
+    <>
+      <div className="relative px-margin md:mt-4">
+        <GameViewHeader />
+        {headings.map((heading, index) => (
+          <GameRow key={index} data={games[index]} title={heading} />
+        ))}
+        <ReviewSection />
+        <GiveAway />
+      </div>
+      <ServiceDetail content={blog} />
+    </>
   );
 };
 

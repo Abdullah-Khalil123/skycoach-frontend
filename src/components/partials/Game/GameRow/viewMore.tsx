@@ -3,7 +3,7 @@ import React from 'react';
 
 const ViewMore = () => {
   return (
-    <div className="relative p-4 overflow-hidden bg-secondary rounded-2xl flex flex-col justify-end">
+    <div className="relative md:h-82 p-4 overflow-hidden bg-secondary rounded-2xl flex flex-col justify-end">
       <div
         className="absolute -bottom-40 -right-60 w-[500px] h-[500px] rounded-full 
                bg-[radial-gradient(circle,_rgba(91,53,252,0.5)_100%,_transparent_100%)]
