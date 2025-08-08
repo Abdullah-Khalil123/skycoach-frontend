@@ -44,6 +44,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --spacing-margin: var(--screen-padding);
+  --text-xxs: 0.65rem;
 }
 
 /* @media (prefers-color-scheme: dark) {

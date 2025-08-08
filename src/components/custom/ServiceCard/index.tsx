@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { Dot } from 'lucide-react';
+import Link from 'next/link';
+import ServiceCardLinkWrapper from '../ServiceCardLinkWrapper';
 
 type ServiceCardProps = {
   title: string;
@@ -10,60 +12,62 @@ type ServiceCardProps = {
 
 const ServiceCard = ({ item }: { item: ServiceCardProps }) => {
   return (
-    <div className="flex flex-col bg-secondary min-h-82  rounded-2xl overflow-hidden group cursor-pointer">
-      {/* Image */}
-      <div className="relative flex-1">
-        <Image
-          alt="service image"
-          className="grayscale"
-          src={'/bg.jpg'}
-          fill
-          objectFit="cover"
-        />
-        <Image
-          src={'/globe.svg'}
-          alt="svg"
-          fill
-          objectFit="contain"
-          className="group-hover:scale-105 transition-transform"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary from-10% to-transparent"></div>
-      </div>
-
-      {/* Body */}
-      <div className="h-1/2 md:min-h-42 md:max-h-42 md:h-2/3 flex flex-col justify-between px-4 pb-4 z-20">
-        <div>
-          <h2 className="text-xl font-semibold mb-2 md:line-clamp-2 text-ellipsis -mt-8">
-            {item.title}
-          </h2>
-
-          <ul className="mb-4">
-            {item.features.map((feature: string, index: number) => (
-              <li className="flex items-start text-xs" key={index}>
-                <Dot color="#21c11c" size={20} strokeWidth={4} />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
+    <ServiceCardLinkWrapper href={`/${item.title}`}>
+      <div className="flex flex-col bg-secondary min-h-82  rounded-2xl overflow-hidden group cursor-pointer">
+        {/* Image */}
+        <div className="relative flex-1">
+          <Image
+            alt="service image"
+            className="grayscale"
+            src={'/bg.jpg'}
+            fill
+            objectFit="cover"
+          />
+          <Image
+            src={'/globe.svg'}
+            alt="svg"
+            fill
+            objectFit="contain"
+            className="group-hover:scale-105 transition-transform"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-secondary from-10% to-transparent"></div>
         </div>
 
-        {/* Price */}
-        <div className="flex justify-between">
-          <p className="text-lg font-bold flex items-center">
-            {item.price == null && 'Free'}
-            {item.price != null && (
-              <>
-                {'$' + String(item.price).split('.')[0]}
-                <sup>{String(item.price).split('.')[1] ?? '00'}</sup>
-              </>
-            )}
-          </p>
-          <button className="cursor-pointer font-semibold bg-primary text-white px-4 py-3 rounded-lg">
-            Buy Now
-          </button>
+        {/* Body */}
+        <div className="h-1/2 md:min-h-42 md:max-h-42 md:h-2/3 flex flex-col justify-between px-4 pb-4 z-20">
+          <div>
+            <h2 className="text-xl font-semibold mb-2 md:line-clamp-2 text-ellipsis -mt-8">
+              {item.title}
+            </h2>
+
+            <ul className="mb-4">
+              {item.features.map((feature: string, index: number) => (
+                <li className="flex items-start text-xs" key={index}>
+                  <Dot color="#21c11c" size={20} strokeWidth={4} />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Price */}
+          <div className="flex justify-between">
+            <p className="text-lg font-bold flex items-center">
+              {item.price == null && 'Free'}
+              {item.price != null && (
+                <>
+                  {'$' + String(item.price).split('.')[0]}
+                  <sup>{String(item.price).split('.')[1] ?? '00'}</sup>
+                </>
+              )}
+            </p>
+            <button className="cursor-pointer font-semibold bg-primary text-white px-4 py-3 rounded-lg">
+              Buy Now
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </ServiceCardLinkWrapper>
   );
 };
 
