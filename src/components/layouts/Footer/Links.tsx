@@ -144,7 +144,12 @@ const FooterLinks = () => {
             {section.links.slice(0, 7).map((link, idx) => (
               <li key={idx} className="mb-2">
                 <Link
-                  href={link.toLowerCase().replace(' ', '-').toLowerCase()}
+                  href={
+                    '/' +
+                    section.title.toLowerCase().replaceAll(' ', '-') +
+                    '/' +
+                    link.toLowerCase().replaceAll(' ', '-')
+                  }
                   key={idx}
                   className="hover:text-white transition-colors cursor-pointer"
                 >

@@ -18,7 +18,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const NavBar = () => {
   const [show, setShow] = useState(false);
-  console.log(show);
 
   return (
     <div className="h-14 md:h-24 flex items-center justify-between px-margin fixed md:static top-0 left-0 right-0 bg-black z-50">
@@ -40,6 +39,7 @@ const NavBar = () => {
           alt={'Logo'}
           width={120}
           height={15}
+          priority
         />
         <ChooseGameButton />
         <div className="flex items-center gap-1">
@@ -56,6 +56,7 @@ const NavBar = () => {
           alt={'Logo'}
           width={120}
           height={15}
+          priority
         />
       </div>
 

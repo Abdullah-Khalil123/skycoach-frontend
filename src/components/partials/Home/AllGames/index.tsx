@@ -1,10 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import AllGames from './AllGames';
 
 export default function AllGamesWrapper() {
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(true);
+  useEffect(() => {
+    setShowAll(false);
+  }, []);
 
   return (
     <div className="bg-secondary p-8 rounded-4xl my-8">

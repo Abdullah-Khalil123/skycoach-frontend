@@ -61,3 +61,25 @@ export const blog = `
   <h3>Q: How Long Does Apex Boosting Take?</h3>
   <p>A: Again, required time depends on the service you have picked. We do try hard to complete it as fast as possible.</p>
 </div>`;
+
+export const serviceDescription = `
+ <p>Simplify your New World experience with our Season Pass Leveling Boost, designed to help you complete the Free or Premium Season Pass effortlessly. Say goodbye to grinding and hello to unlocking all rare Season 8 rewards with ease.</p>
+
+  <p>Ordinarily, obtaining these rewards requires consistent participation in daily activities, quests, and challenges. However, our Season Pass carry service ensures you reap the benefits of both the Free and Premium tracks, granting you a wealth of valuable items to enrich your adventure in Aeternum.</p>
+
+  <h3>Free Track Rewards:</h3>
+  <ol>
+    <li>Cosmetics like Helm skins and Tool skins (e.g., Sinner’s Ripper, Chopper, Oblivion’s Herald Mask).</li>
+    <li>Crafting materials, refining kits, food bundles, ward boxes, salvage kits, and elemental resources.</li>
+    <li>Expedition and mutation material bundles.</li>
+    <li>EXP boosters for Season, Weapon, Gathering, and Territory.</li>
+    <li>Powerful Artifacts: Lich Gloves and Vampire’s Vestments.</li>
+  </ol>
+
+  <h3>Premium Track Rewards:</h3>
+  <ol>
+    <li>Transmog Tokens and Chromatic Seals.</li>
+    <li>Premium Cosmetics, including skins for weapons, armor, and mount attachments (e.g., Fallen Terrorizer, Fallen Lacerator, Blackguard’s Armor Set).</li>
+    <li>EXP boosters for Season, Weapon, Gathering, and Territory.</li>
+    <li>Premium versions of Gem, Crafting, Elemental, and Salvage boxes.</li>
+  </ol>`;

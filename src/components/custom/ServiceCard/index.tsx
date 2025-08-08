@@ -19,7 +19,7 @@ const ServiceCard = ({
 }) => {
   return (
     <Link
-      href={`${slug}/${item.title.toLowerCase().replace(' ', '-')}`}
+      href={`${slug}/${item.title.toLowerCase().replaceAll(' ', '-')}`}
       className={'min-h-82 flex flex-col'}
     >
       <div className="flex flex-col bg-secondary min-h-82 rounded-2xl overflow-hidden group cursor-pointer">
