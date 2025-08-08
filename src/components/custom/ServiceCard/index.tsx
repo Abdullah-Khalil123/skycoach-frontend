@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Dot } from 'lucide-react';
 import Link from 'next/link';
-import ServiceCardLinkWrapper from '../ServiceCardLinkWrapper';
+// import ServiceCardLinkWrapper from '../ServiceCardLinkWrapper';
 
 type ServiceCardProps = {
   title: string;
@@ -10,10 +10,19 @@ type ServiceCardProps = {
   price: number | null;
 };
 
-const ServiceCard = ({ item }: { item: ServiceCardProps }) => {
+const ServiceCard = ({
+  item,
+  slug,
+}: {
+  item: ServiceCardProps;
+  slug: string;
+}) => {
   return (
-    <ServiceCardLinkWrapper href={`/${item.title}`}>
-      <div className="flex flex-col bg-secondary min-h-82  rounded-2xl overflow-hidden group cursor-pointer">
+    <Link
+      href={`${slug}/${item.title.toLowerCase().replace(' ', '-')}`}
+      className={'min-h-82 flex flex-col'}
+    >
+      <div className="flex flex-col bg-secondary min-h-82 rounded-2xl overflow-hidden group cursor-pointer">
         {/* Image */}
         <div className="relative flex-1">
           <Image
@@ -34,7 +43,7 @@ const ServiceCard = ({ item }: { item: ServiceCardProps }) => {
         </div>
 
         {/* Body */}
-        <div className="h-1/2 md:min-h-42 md:max-h-42 md:h-2/3 flex flex-col justify-between px-4 pb-4 z-20">
+        <div className="h-1/2 bg-secondary md:min-h-42 md:max-h-42 md:h-2/3 flex flex-col justify-between px-4 pb-4 z-20">
           <div>
             <h2 className="text-xl font-semibold mb-2 md:line-clamp-2 text-ellipsis -mt-8">
               {item.title}
@@ -67,7 +76,7 @@ const ServiceCard = ({ item }: { item: ServiceCardProps }) => {
           </div>
         </div>
       </div>
-    </ServiceCardLinkWrapper>
+    </Link>
   );
 };
 

@@ -9,7 +9,15 @@ type GameRowProps = {
   price: number | null;
 };
 
-const GameRow = ({ data, title }: { data: GameRowProps[]; title: string }) => {
+const GameRow = ({
+  data,
+  title,
+  slug,
+}: {
+  data: GameRowProps[];
+  title: string;
+  slug: string;
+}) => {
   const hasMore = data.length > 5;
 
   return (
@@ -20,7 +28,7 @@ const GameRow = ({ data, title }: { data: GameRowProps[]; title: string }) => {
         {/* Mobile: show all items and ViewMore */}
         <div className="md:hidden space-y-4">
           {data.slice(0, 4).map((item, index) => (
-            <ServiceCard key={index} item={item} />
+            <ServiceCard key={index} item={item} slug={slug} />
           ))}
           {hasMore && <ViewMore />}
         </div>
@@ -29,28 +37,28 @@ const GameRow = ({ data, title }: { data: GameRowProps[]; title: string }) => {
         {/* 1st item always */}
         {data[0] && (
           <div className="hidden md:block">
-            <ServiceCard item={data[0]} />
+            <ServiceCard item={data[0]} slug={slug} />
           </div>
         )}
 
         {/* 2nd on md+ */}
         {data[1] && (
           <div className="hidden md:block">
-            <ServiceCard item={data[1]} />
+            <ServiceCard item={data[1]} slug={slug} />
           </div>
         )}
 
         {/* 3rd on xl+ */}
         {data[2] && (
           <div className="hidden xl:block">
-            <ServiceCard item={data[2]} />
+            <ServiceCard item={data[2]} slug={slug} />
           </div>
         )}
 
         {/* 4th on 2xl+ */}
         {data[3] && (
           <div className="hidden 2xl:block">
-            <ServiceCard item={data[3]} />
+            <ServiceCard item={data[3]} slug={slug} />
           </div>
         )}
 
@@ -64,7 +72,7 @@ const GameRow = ({ data, title }: { data: GameRowProps[]; title: string }) => {
         {/* Show 5th item on 2xl+ only if not showing ViewMore */}
         {!hasMore && data[4] && (
           <div className="hidden 2xl:block">
-            <ServiceCard item={data[4]} />
+            <ServiceCard item={data[4]} slug={slug} />
           </div>
         )}
       </div>

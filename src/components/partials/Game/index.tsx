@@ -93,13 +93,18 @@ const games = [data, data2, data3];
 
 const headings = ['Hot Offers', 'Popular Services', 'New Arrivals'];
 
-const GameViewPage = () => {
+const GameViewPage = ({ slug }: { slug: string }) => {
   return (
     <>
       <div className="relative px-margin md:mt-4">
         <GameViewHeader />
         {headings.map((heading, index) => (
-          <GameRow key={index} data={games[index]} title={heading} />
+          <GameRow
+            key={index}
+            data={games[index]}
+            slug={slug}
+            title={heading}
+          />
         ))}
         <ReviewSection />
         <GiveAway />
