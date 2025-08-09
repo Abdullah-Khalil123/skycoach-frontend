@@ -150,7 +150,7 @@ const NavContent = () => {
         <input
           type="text"
           placeholder="Games, offers and articles"
-          className="bg-secondary pl-10 p-4 rounded w-full h-12"
+          className="bg-secondary pl-10 p-4 rounded w-full h-12 placeholder-white"
         />
       </div>
 

@@ -15,6 +15,7 @@ import {
 import ChooseGameButton from './ChooseGameButton';
 import NavContent from './NavContent';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 const NavBar = () => {
   const [show, setShow] = useState(false);
@@ -33,14 +34,16 @@ const NavBar = () => {
 
       {/* Medium+ screen: Left section */}
       <div className="hidden md:flex items-center gap-4">
-        <Image
-          className="invert"
-          src={'/next.svg'}
-          alt={'Logo'}
-          width={120}
-          height={15}
-          priority
-        />
+        <Link href={'/'}>
+          <Image
+            className="invert"
+            src={'/next.svg'}
+            alt={'Logo'}
+            width={120}
+            height={15}
+            priority
+          />
+        </Link>
         <ChooseGameButton />
         <div className="flex items-center gap-1">
           <Dot className="text-green-400" />
@@ -50,14 +53,16 @@ const NavBar = () => {
 
       {/* Small screen: Center */}
       <div className="md:hidden">
-        <Image
-          className="invert"
-          src={'/next.svg'}
-          alt={'Logo'}
-          width={120}
-          height={15}
-          priority
-        />
+        <Link href={'/'}>
+          <Image
+            className="invert"
+            src={'/next.svg'}
+            alt={'Logo'}
+            width={120}
+            height={15}
+            priority
+          />
+        </Link>
       </div>
 
       {/* Medium+ screen: Right section */}
