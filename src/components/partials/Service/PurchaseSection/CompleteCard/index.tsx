@@ -9,7 +9,7 @@ const platforms = [
 
 const CompletionCard = () => {
   return (
-    <div className="bg-gradient-to-r from-primary to-[#804afc] p-4 md:p-8 rounded-2xl md:min-w-90">
+    <div className="bg-gradient-to-r from-primary to-[#804afc] p-4 md:p-8 rounded-2xl md:min-w-80">
       <h5>Select completion speed</h5>
       <PlatformSelection
         platforms={platforms}

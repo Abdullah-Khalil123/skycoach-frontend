@@ -11,7 +11,7 @@ const ServiceHero = () => {
           <FeatuesList key={index} feature={feature} />
         ))}
       </div>
-      <div className="pl-margin flex items-center">
+      <div className="pl-margin flex items-center lg:hidden">
         {Array.from({ length: 5 }).map((_, index) => (
           <Star size={16} key={index} fill="green" stroke="green" />
         ))}
@@ -23,7 +23,7 @@ const ServiceHero = () => {
 
 const FeatuesList = ({ feature }: { feature: string }) => {
   return (
-    <p className="pl-margin py-1 text-xs mb-2 bg-gradient-to-r from-primary via-primary/90 to-transparent w-fit">
+    <p className="pl-margin text-nowrap py-1 text-xs mb-2 bg-gradient-to-r from-primary via-primary/90 to-transparent w-fit">
       {feature}
     </p>
   );

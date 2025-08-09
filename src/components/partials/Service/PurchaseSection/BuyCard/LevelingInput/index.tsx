@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import RangeSlider from '../../RangeInput';
+import RangeSlider from './RangeInput';
 
 const LevelingInput = () => {
   const [currentLevel, setCurrentLevel] = useState(25);
