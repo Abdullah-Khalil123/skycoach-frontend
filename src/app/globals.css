@@ -139,6 +139,12 @@
 
 .scrollbar-x-thin::-webkit-scrollbar {
   height: 3px;
+  width: 3px;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  height: 3px;
+  width: 0px;
 }
 
 .scrollbar-x-thin::-webkit-scrollbar-track {

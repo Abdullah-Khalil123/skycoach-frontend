@@ -17,6 +17,8 @@ import NavContent from './NavContent';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
+const buttonStyles = `px-3 rounded cursor-pointer hover:bg-secondary py-2`;
+
 const NavBar = () => {
   const [show, setShow] = useState(false);
 
@@ -44,7 +46,11 @@ const NavBar = () => {
             priority
           />
         </Link>
-        <ChooseGameButton />
+        <ChooseGameButton
+          onClick={() => {
+            setShow(true);
+          }}
+        />
         <div className="flex items-center gap-1">
           <Dot className="text-green-400" />
           <p className="text-sm font-semibold">788 PROs online</p>
@@ -67,14 +73,22 @@ const NavBar = () => {
 
       {/* Medium+ screen: Right section */}
       <div className="hidden md:flex items-center gap-4">
-        <Search />
-        <Heart />
-        <div className="flex items-center">
+        <div className={buttonStyles} onClick={() => setShow(true)}>
+          <Search />
+        </div>
+        <div className={buttonStyles}>
+          <Heart />
+        </div>
+        <div className={'flex items-center ' + buttonStyles}>
           <DollarSign />
           <ChevronDown />
         </div>
-        <User />
-        <LayoutGrid />
+        <div className={buttonStyles}>
+          <User />
+        </div>
+        <div className={buttonStyles}>
+          <LayoutGrid />
+        </div>
       </div>
 
       {/* Small screen: Right */}
@@ -96,9 +110,15 @@ const NavBar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-14 left-0 right-0 z-40 bg-black"
+            className="fixed top-14 md:top-0 left-0 right-0 z-40 bg-black"
           >
-            <NavContent />
+            <div
+              onClick={() => {
+                setShow(false);
+              }}
+              className="absolute w-full h-screen backdrop-blur-md bg-black/30"
+            ></div>
+            <NavContent setShow={setShow} />
           </motion.div>
         )}
       </AnimatePresence>
