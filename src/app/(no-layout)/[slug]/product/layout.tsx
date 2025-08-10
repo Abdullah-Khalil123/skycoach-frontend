@@ -1,9 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
+import NavBar from '@/components/layouts/NavBar';
+import Footer from '@/components/layouts/Footer';
 
 const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <div>
+    <div className="pt-18 md:pt-0">
+      <NavBar />
       <div className="absolute h-[70vh] inset-0 -z-10">
         <div className="relative w-full h-full">
           <Image
@@ -16,6 +19,7 @@ const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         </div>
       </div>
       {children}
+      <Footer />
     </div>
   );
 };
