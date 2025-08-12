@@ -1,46 +1,76 @@
 'use client';
 import React from 'react';
 import { ChevronLeft } from 'lucide-react';
-import { useParams } from 'next/navigation';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
-const BreadCrumbs = () => {
+const BreadCrumbs = ({
+  showBack = true,
+  className,
+}: {
+  showBack?: boolean;
+  className?: string;
+}) => {
   const router = useRouter();
+  const pathname = usePathname();
 
-  const params = useParams();
-  const slug = (params.slug as string)
-    ?.split('-')
-    .map((word) => {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(' ');
-  const sub =
-    params.sub &&
-    (params.sub as string)
-      ?.split('-')
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(' ');
+  // Split path into segments, remove empty ones
+  const segments = pathname
+    .split('/')
+    .filter(Boolean) // remove empty from leading slash
+    .filter(
+      (seg) =>
+        seg.toLocaleLowerCase() !== 'product' &&
+        seg.toLocaleLowerCase() !== 'blog'
+    )
+    .map((seg) =>
+      seg
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    );
 
   const handleBack = () => {
     router.back();
   };
 
   return (
-    <div className="flex items-center text-xs">
-      <button
-        onClick={handleBack}
-        className="flex items-center gap-1 text-xs bg-secondary/30 px-2 py-2 pr-3 rounded-lg"
-      >
-        <ChevronLeft size={20} className="-translate-y-px" />
-        Call of Duty
-      </button>
-      <div className="text-xxs ml-4 hidden md:block">
-        <Link href={'/'}>Skycoach</Link> /{' '}
-        <Link href={`/${params.slug}`}>{slug} / </Link>
-        <span className="text-secondary-text">{sub}</span>
+    <div className={cn('flex items-center text-xs', className)}>
+      {/* Back Button */}
+      {showBack && (
+        <button
+          onClick={handleBack}
+          className="flex items-center gap-1 text-xs bg-secondary/30 px-2 py-2 pr-3 rounded-lg"
+        >
+          <ChevronLeft size={20} className="-translate-y-px" />
+          {segments[segments.length - 1] || 'Back'}
+        </button>
+      )}
+
+      {/* Breadcrumb Path */}
+      <div className={cn('text-xxs hidden md:block', showBack ? 'ml-4' : '')}>
+        <Link href="/">SkyCoach /</Link>
+        {segments.map((label, index) => {
+          const href =
+            '/' +
+            pathname
+              .split('/')
+              .filter(Boolean)
+              .slice(0, index + 1)
+              .join('/');
+          const isLast = index === segments.length - 1;
+          return (
+            <span key={index}>
+              {' / '}
+              {isLast ? (
+                <span className="text-secondary-text">{label}</span>
+              ) : (
+                <Link href={href}>{label}</Link>
+              )}
+            </span>
+          );
+        })}
       </div>
     </div>
   );

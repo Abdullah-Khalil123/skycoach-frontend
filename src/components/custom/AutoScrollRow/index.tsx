@@ -1,55 +1,46 @@
 'use client';
 
-import React, { useEffect, useRef, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
 
 interface AutoScrollRowProps {
   children: ReactNode;
   interval?: number;
   className?: string;
+  slidesPerView?: number | 'auto';
+  spaceBetween?: number;
 }
 
 const AutoScrollRow: React.FC<AutoScrollRowProps> = ({
   children,
   interval = 2500,
   className = '',
+  slidesPerView = 'auto',
+  spaceBetween = 16,
 }) => {
-  const scrollRef = useRef<HTMLDivElement>(null); // ✅ typed ref
-
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    let scrollAmount = 0;
-    const firstChild = container.firstElementChild as HTMLElement | null; // ✅ typed child
-    const cardWidth = firstChild?.offsetWidth || 200;
-
-    const timer = setInterval(() => {
-      scrollAmount += cardWidth;
-
-      if (scrollAmount >= container.scrollWidth - container.clientWidth) {
-        scrollAmount = 0;
-      }
-
-      container.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [interval]);
+  const items = React.Children.toArray(children);
 
   return (
-    <div
-      ref={scrollRef}
-      className={`flex gap-4 w-full overflow-x-auto snap-x snap-mandatory scroll-smooth ${className}`}
+    <Swiper
+      className={className}
+      slidesPerView={slidesPerView}
+      spaceBetween={spaceBetween}
+      loop
+      autoplay={{
+        delay: interval,
+        disableOnInteraction: false,
+      }}
+      modules={[Autoplay]}
     >
-      {React.Children.map(children, (child, i) => (
-        <div key={i} className="snap-start shrink-0">
+      {items.map((child, index) => (
+        <SwiperSlide key={index} style={{ width: 'auto' }}>
           {child}
-        </div>
+        </SwiperSlide>
       ))}
-    </div>
+    </Swiper>
   );
 };
 

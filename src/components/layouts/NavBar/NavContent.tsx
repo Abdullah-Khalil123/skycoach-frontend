@@ -303,7 +303,7 @@ const NavContent = ({
               ))}
             </div>
           </div>
-          <div className="hidden lg:block w-110 h-80 px-8 overflow-y-scroll">
+          <div className="hidden lg:block w-110 h-80 px-8 overflow-y-scroll scrollbar-x-thin">
             <p className="text-sm text-secondary-text mb-4">Picks of the day</p>
             <Swiper
               slidesPerView={1}

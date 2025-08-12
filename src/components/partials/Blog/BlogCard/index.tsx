@@ -4,7 +4,7 @@ import Image from 'next/image';
 const BlogCard = () => {
   return (
     <div className="rounded-3xl overflow-hidden border border-secondary-text">
-      <div className="relative h-[340px] w-full">
+      <div className="relative h-[340px] lg:h-[200px] w-full">
         <Image fill objectFit="cover" alt="blog-card" src={'/blog-card.jpg'} />
         <div className="absolute w-full bottom-0 h-20 bg-gradient-to-t from-black to-100%" />
       </div>
