@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const SmallBlogCard = () => {
   return (
-    <div className="relative rounded-3xl overflow-hidden h-52 min-w-48 border border-secondary-text">
+    <div className="relative mr-4 rounded-3xl overflow-hidden h-52 min-w-48 border border-secondary-text">
       <div className="relative h-2/3 w-full">
         <Image
           alt="blog-image"

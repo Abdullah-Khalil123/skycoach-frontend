@@ -19,11 +19,7 @@ const BreadCrumbs = ({
   const segments = pathname
     .split('/')
     .filter(Boolean) // remove empty from leading slash
-    .filter(
-      (seg) =>
-        seg.toLocaleLowerCase() !== 'product' &&
-        seg.toLocaleLowerCase() !== 'blog'
-    )
+    .filter((seg) => seg.toLocaleLowerCase() !== 'product')
     .map((seg) =>
       seg
         .split('-')
@@ -41,7 +37,7 @@ const BreadCrumbs = ({
       {showBack && (
         <button
           onClick={handleBack}
-          className="flex items-center gap-1 text-xs bg-secondary/30 px-2 py-2 pr-3 rounded-lg"
+          className="flex items-center gap-1 text-xs bg-secondary px-2 py-2 pr-3 rounded-lg"
         >
           <ChevronLeft size={20} className="-translate-y-px" />
           {segments[segments.length - 1] || 'Back'}
@@ -50,7 +46,7 @@ const BreadCrumbs = ({
 
       {/* Breadcrumb Path */}
       <div className={cn('text-xxs hidden md:block', showBack ? 'ml-4' : '')}>
-        <Link href="/">SkyCoach /</Link>
+        <Link href="/">SkyCoach</Link>
         {segments.map((label, index) => {
           const href =
             '/' +

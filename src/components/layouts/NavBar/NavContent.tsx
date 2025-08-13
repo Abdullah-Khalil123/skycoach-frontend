@@ -232,7 +232,7 @@ const NavContent = ({
     };
   }, []);
   return (
-    <div className="absolute top-full left-0 right-0 h-dvh md:h-[75vh] overflow-hidden w-full bg-black p-4 md:pt-0 md:px-0">
+    <div className="absolute top-full left-0 right-0 h-dvh md:h-[75vh] md:min-h-[500px] overflow-hidden w-full bg-black p-4 md:pt-0 md:px-0">
       <div className="hidden md:block">
         <div className="h-20 px-16 w-full flex items-center justify-between">
           <div />
@@ -268,7 +268,7 @@ const NavContent = ({
       </p>
       <div className="md:flex">
         {/* Left Side */}
-        <div className="relative md:w-80 md:pt-4 md:pb-4 border-r border-secondary">
+        <div className="relative md:w-80 md:pt-4 md:pb-4 md:border-r border-secondary">
           <div className="pointer-events-none absolute top-0 bg-gradient-to-b from-black to-transparent w-full h-10 z-20" />
           <ul className="overflow-y-auto scrollbar-none max-h-[calc(100dvh-170px)] md:max-h-[calc(60vh-75px)] pr-2 md:pr-0">
             {/* <ul className="overflow-y-auto max-h-full"> */}
@@ -285,7 +285,7 @@ const NavContent = ({
         </div>
 
         {/* Right Side */}
-        <div className="w-full px-8 flex">
+        <div className="hidden md:flex w-full px-8">
           <div className="h-90 w-full pb-16 overflow-y-scroll scrollbar-x-thin">
             <h5 className="mb-4 text-secondary-text text-sm">Categories</h5>
             <div className="grid grid-cols-3 space-y-8">

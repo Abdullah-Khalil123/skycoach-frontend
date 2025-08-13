@@ -1,5 +1,5 @@
-'use client';
 import GameCard from '@/components/custom/GameCard';
+import Link from 'next/link';
 
 const cards = [
   {
@@ -50,7 +50,15 @@ export default function HotNowSection() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {cards.map((card, idx) => (
-          <GameCard card={card} key={idx} />
+          <Link
+            href={`/${card.title.replaceAll(
+              ' ',
+              '-'
+            )}/product/${card.title.replaceAll(' ', '-')}`}
+            key={idx}
+          >
+            <GameCard card={card} key={idx} />
+          </Link>
         ))}
       </div>
     </div>

@@ -13,6 +13,7 @@ const HeroPage = () => {
           grid-cols-1 
           sm:grid-cols-2
           lg:grid-cols-4
+          xl:grid-cols-5
           auto-rows-fr
         "
       >
@@ -27,7 +28,7 @@ const HeroPage = () => {
           <CardSwiper />
         </div>
 
-        {Array.from({ length: 10 }).map((_, index) => (
+        {Array.from({ length: 14 }).map((_, index) => (
           <GameCard key={index} />
         ))}
       </div>

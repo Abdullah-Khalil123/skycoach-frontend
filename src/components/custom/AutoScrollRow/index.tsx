@@ -19,7 +19,6 @@ const AutoScrollRow: React.FC<AutoScrollRowProps> = ({
   interval = 2500,
   className = '',
   slidesPerView = 'auto',
-  spaceBetween = 16,
 }) => {
   const items = React.Children.toArray(children);
 
@@ -27,7 +26,6 @@ const AutoScrollRow: React.FC<AutoScrollRowProps> = ({
     <Swiper
       className={className}
       slidesPerView={slidesPerView}
-      spaceBetween={spaceBetween}
       loop
       autoplay={{
         delay: interval,
