@@ -8,9 +8,14 @@ import {
   Heart,
   DollarSign,
   Dot,
+  EuroIcon,
   ChevronDown,
   LayoutGrid,
   X as Cross,
+  BookOpen,
+  Percent,
+  ThumbsUp,
+  Zap,
 } from 'lucide-react';
 import ChooseGameButton from './ChooseGameButton';
 import NavContent from './NavContent';
@@ -79,16 +84,12 @@ const NavBar = () => {
         <div className={buttonStyles}>
           <Heart />
         </div>
-        <div className={'flex items-center ' + buttonStyles}>
-          <DollarSign />
-          <ChevronDown />
-        </div>
+        <CurrencyDropdown buttonStyles={buttonStyles} />
+
         <div className={buttonStyles}>
           <User />
         </div>
-        <div className={buttonStyles}>
-          <LayoutGrid />
-        </div>
+        <MoreMenuDropdown buttonStyles={buttonStyles} />
       </div>
 
       {/* Small screen: Right */}
@@ -127,3 +128,97 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+const CurrencyDropdown = ({ buttonStyles = '' }: { buttonStyles?: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className={`relative flex items-center ${buttonStyles}`}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <DollarSign />
+      <ChevronDown />
+
+      {/* Invisible hover bridge */}
+      <div className="absolute left-0 top-full w-full h-2 bg-transparent"></div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="dropdown"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="absolute left-0 top-full mt-2 w-30 rounded-lg bg-secondary shadow-md z-20"
+          >
+            <ul className="py-2 text-sm text-white">
+              <li className="mx-2 px-4 py-2 rounded-lg hover:bg-secondary-foreground cursor-pointer">
+                <DollarSign className="inline mr-1" />
+                USD
+              </li>
+              <li className="mx-2 px-4 py-2 rounded-lg hover:bg-secondary-foreground cursor-pointer">
+                <EuroIcon className="inline mr-1" />
+                EUR
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const MoreMenuDropdown = ({ buttonStyles = '' }: { buttonStyles?: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className={`relative flex items-center ${buttonStyles}`}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <LayoutGrid />
+
+      {/* Invisible hover bridge */}
+      <div className="absolute left-0 top-full w-full h-2 bg-transparent"></div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="dropdown"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="absolute right-0 top-full mt-2 w-58 rounded-lg bg-[#6439F5] text-white shadow-md z-20"
+          >
+            <ul className="py-2 text-sm [&_li]:mx-2 [&_li]:rounded-lg">
+              <li className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 cursor-pointer">
+                <Zap size={16} /> About us
+              </li>
+              <li className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 cursor-pointer">
+                <Percent size={16} /> Cashback
+              </li>
+              <li className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 cursor-pointer">
+                <BookOpen size={16} /> Blog
+              </li>
+              <li className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 cursor-pointer">
+                <ThumbsUp size={16} /> Become a PRO
+              </li>
+              <hr className="my-2 border-white/20" />
+              <li className="px-4 py-2 hover:bg-white/10 cursor-pointer">
+                Trust & safety
+              </li>
+              <li className="px-4 py-2 hover:bg-white/10 cursor-pointer">
+                Contact us
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
