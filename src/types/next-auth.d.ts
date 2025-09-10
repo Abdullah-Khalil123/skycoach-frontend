@@ -8,4 +8,10 @@ declare module 'next-auth' {
     email: string;
     token: string;
   }
+
+  interface Session {
+    accessToken: string;
+    user: User;
+    expires: ISODateString;
+  }
 }

@@ -1,11 +1,7 @@
 import NextAuth, { CredentialsSignin } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import axios from 'axios';
-
-const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  withCredentials: true,
-});
+import { login } from './actions/auth';
 
 export class InvalidLoginError extends CredentialsSignin {
   code = 'custom';
@@ -24,10 +20,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       async authorize(credentials) {
         try {
-          const response = await axiosInstance.post('/user/login', {
-            email: credentials?.email,
-            password: credentials?.password,
+          const response = await login({
+            email: (credentials?.email as string) || '',
+            password: (credentials?.password as string) || '',
           });
+
           const { user, token } = response.data;
           if (user && token) {
             return {
@@ -42,7 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         } catch (error) {
           if (axios.isAxiosError(error)) {
             const message =
-              error.response?.data?.error || 'Something went wrong';
+              error.response?.data?.message || 'Something went wrong';
             throw new InvalidLoginError(message);
           }
           return null;
@@ -50,6 +47,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+
   session: {
     strategy: 'jwt',
   },
