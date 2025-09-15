@@ -21,6 +21,7 @@ import ChooseGameButton from './ChooseGameButton';
 import NavContent from './NavContent';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import UserButton from './UserButton';
 
 const buttonStyles = `px-3 rounded cursor-pointer hover:bg-secondary py-2`;
 
@@ -86,9 +87,7 @@ const NavBar = () => {
         </div>
         <CurrencyDropdown buttonStyles={buttonStyles} />
 
-        <div className={buttonStyles}>
-          <User />
-        </div>
+        <UserButton />
         <MoreMenuDropdown buttonStyles={buttonStyles} />
       </div>
 
@@ -101,7 +100,7 @@ const NavBar = () => {
             }}
           />
         ) : (
-          <User />
+          <UserButton styles={false} />
         )}
       </div>
       <AnimatePresence>

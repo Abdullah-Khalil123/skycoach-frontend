@@ -4,6 +4,8 @@ import localFont from 'next/font/local';
 import './globals.css';
 import ReactQueryProvider from '@/providers/react-query';
 import { Toaster } from 'sonner';
+import ReduxProvider from '@/providers/react-redux';
+import { SessionProvider } from 'next-auth/react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,11 +39,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${skelzl.className} antialiased max-w-[1730px] mx-auto`}
       >
-        <ReactQueryProvider>
-          {children}
-
-          <Toaster />
-        </ReactQueryProvider>
+        <SessionProvider refetchOnWindowFocus={false} refetchInterval={10 * 60}>
+          <ReduxProvider>
+            <ReactQueryProvider>
+              {children}
+              <Toaster />
+            </ReactQueryProvider>
+          </ReduxProvider>
+        </SessionProvider>
       </body>
     </html>
   );

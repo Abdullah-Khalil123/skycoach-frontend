@@ -17,4 +17,23 @@ const login = async ({
   }
 };
 
-export { login };
+const register = async ({
+  email,
+  password,
+  password_confirmation,
+}: {
+  email: string;
+  password: string;
+  password_confirmation: string;
+}) => {
+  try {
+    const response = await axiosInstance.post('/auth/register', null, {
+      params: { email, password, password_confirmation },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { login, register };

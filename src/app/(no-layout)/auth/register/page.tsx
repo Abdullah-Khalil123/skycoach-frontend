@@ -1,12 +1,10 @@
 import Register from '@/components/partials/Register';
-import React from 'react';
+import AuthLayout from '../AuthLayout';
 
-const RegisterPage = () => {
+export default function LoginPage() {
   return (
-    <div>
+    <AuthLayout>
       <Register />
-    </div>
+    </AuthLayout>
   );
-};
-
-export default RegisterPage;
+}

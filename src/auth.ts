@@ -29,8 +29,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           if (user && token) {
             return {
               id: user.id,
-              name: user.name,
+              nickname: user.nickname,
               email: user.email,
+              email_verified_at: user.email_verified_at,
+              vip_level: user.vip_level,
+              balance: user.balance,
+              last_login_at: user.last_login_at,
               token: token,
             };
           }
@@ -54,21 +58,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user, account }) {
       if (user && account?.type === 'credentials') {
-        const { id, name, email, token: accessToken } = user;
-        Object.assign(token, { id, name, email, accessToken });
+        token.user = user;
+        token.accessToken = user.token;
       }
       return token;
     },
     async session({ session, token }) {
-      if (token) {
-        const { id = '', name = '', email = '' } = token ?? {};
-        Object.assign(session.user, { id, name, email });
-
-        return {
-          ...session,
-          accessToken: token.accessToken ?? '',
-        };
+      if (token.user) {
+        session.user = token.user as typeof session.user;
       }
+      session.accessToken = token.accessToken as string;
       return session;
     },
   },

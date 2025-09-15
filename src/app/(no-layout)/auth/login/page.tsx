@@ -1,12 +1,10 @@
+import AuthLayout from '../AuthLayout';
 import Login from '@/components/partials/Login';
-import React from 'react';
 
-const LoginPage = () => {
+export default function LoginPage() {
   return (
-    <div>
+    <AuthLayout>
       <Login />
-    </div>
+    </AuthLayout>
   );
-};
-
-export default LoginPage;
+}
