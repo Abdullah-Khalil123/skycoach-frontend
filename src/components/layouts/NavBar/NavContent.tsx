@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X as Cross, Search, User } from 'lucide-react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import GameCard from '@/components/custom/GameCard';
 import Image from 'next/image';
+import { getHotServices } from '@/actions/services';
+import { Service } from '@/types/services';
 
 const games = [
   {
@@ -215,7 +217,15 @@ const NavContent = ({
 }: {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const [services, setServices] = useState<Service[]>([]);
+
   useEffect(() => {
+    const fetchData = async () => {
+      const result = await getHotServices();
+      setServices(result.data.all_services);
+    };
+    fetchData();
+
     const handleBodyOverflow = () => {
       if (window.innerWidth < 768) {
         // 768px is typically the 'md' breakpoint in most frameworks
@@ -307,6 +317,7 @@ const NavContent = ({
             <p className="text-sm text-secondary-text mb-4">Picks of the day</p>
             <Swiper
               slidesPerView={1}
+              spaceBetween={20}
               pagination={{ clickable: true }}
               modules={[Pagination, Autoplay]}
               autoplay={{
@@ -315,9 +326,9 @@ const NavContent = ({
               }}
               loop={true}
             >
-              {[1, 2, 3].map((num, idx) => (
-                <SwiperSlide key={num}>
-                  <GameCard card={cards[idx]} key={num} />
+              {services.slice(0, 4).map((service, idx) => (
+                <SwiperSlide key={idx}>
+                  <GameCard service={service} key={idx} />
                 </SwiperSlide>
               ))}
             </Swiper>

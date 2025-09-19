@@ -2,8 +2,12 @@ import React from 'react';
 import HeroFilters from './filter';
 import CardSwiper from './cardSwiper';
 import GameCard from './gameCard';
+import { getBanners } from '@/actions/banner';
+import { Banner } from '@/types/banner';
 
-const HeroPage = () => {
+const HeroPage = async () => {
+  const data = await getBanners();
+  const banners: Banner[] = data.data || [];
   return (
     <div>
       <HeroFilters />
@@ -25,7 +29,7 @@ const HeroPage = () => {
             lg:col-span-3
           "
         >
-          <CardSwiper />
+          <CardSwiper banners={banners} />
         </div>
 
         {Array.from({ length: 14 }).map((_, index) => (

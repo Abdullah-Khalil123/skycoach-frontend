@@ -1,21 +1,22 @@
 import React from 'react';
 import Image from 'next/image';
+import { Article } from '@/types/articles';
 
-const SmallBlogCard = () => {
+const SmallBlogCard = ({ article }: { article: Article }) => {
   return (
     <div className="relative mr-4 rounded-3xl overflow-hidden h-52 min-w-48 border border-secondary-text">
       <div className="relative h-2/3 w-full">
         <Image
-          alt="blog-image"
-          src={'/blog-card.jpg'}
+          alt={article.name}
+          src={article.image}
           fill
-          objectFit="center"
+          className="object-cover"
         />
         <div className="absolute w-full bottom-0 h-30 bg-gradient-to-t from-black to-50%" />
       </div>
-      <div className="absolute top-0 h-full flex flex-col gap-2 justify-end px-4 pb-4 text-xs ">
-        <Image alt="logo" src={'/vercel.svg'} width={20} height={20} />
-        <p>Manaforge Vandals Renown Guide - The War Within 11.2</p>
+      <div className="absolute top-0 h-full flex flex-col gap-2 justify-end px-4 pb-4 text-xs text-white">
+        <p className="font-bold">{article.name}</p>
+        <p className="line-clamp-2">{article.description}</p>
       </div>
     </div>
   );
