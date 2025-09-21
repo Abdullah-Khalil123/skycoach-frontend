@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Article } from '@/types/articles';
+import { getImageUrl } from '@/utils/getImageUrl';
 
 const SmallBlogCard = ({ article }: { article: Article }) => {
   return (
@@ -8,7 +9,7 @@ const SmallBlogCard = ({ article }: { article: Article }) => {
       <div className="relative h-2/3 w-full">
         <Image
           alt={article.name}
-          src={article.image}
+          src={getImageUrl(article.image)}
           fill
           className="object-cover"
         />

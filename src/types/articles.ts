@@ -1,6 +1,6 @@
 import z from 'zod';
 
-const articleSchema = z.object({
+export const articleSchema = z.object({
   admin_id: z.number(),
   author_id: z.number(),
   content: z.string(),

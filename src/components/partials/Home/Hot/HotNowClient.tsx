@@ -38,8 +38,8 @@ export default function HotNowClient({
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {services.slice(0, 4).map((service, idx) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {services.slice(0, 5).map((service, idx) => (
           <Link
             href={`/${service.name.replaceAll(
               ' ',

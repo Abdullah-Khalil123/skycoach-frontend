@@ -1,6 +1,6 @@
 import { axiosInstance } from '@/utils/axios';
 
-const getHotServices = async (params?: {}) => {
+const getHotServices = async (params?: Record<string, string>) => {
   try {
     const response = await axiosInstance.get('/services/hot-services', params);
     return response.data;

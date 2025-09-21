@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Article } from '@/types/articles';
+import { getImageUrl } from '@/utils/getImageUrl';
 
 const BlogCard = ({ article }: { article: Article }) => {
   return (
@@ -10,8 +11,8 @@ const BlogCard = ({ article }: { article: Article }) => {
         <Image
           fill
           className="object-cover"
+          src={getImageUrl(article.image)}
           alt={article.name}
-          src={article.image}
         />
         <div className="absolute w-full bottom-0 h-20 bg-gradient-to-t from-black to-100%" />
       </div>

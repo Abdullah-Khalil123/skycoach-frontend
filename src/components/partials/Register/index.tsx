@@ -25,7 +25,8 @@ const Register = () => {
     setIsLoading(true);
     try {
       await RegisterAction(data);
-      const res = await signIn('credentials', {
+      // const res =
+      await signIn('credentials', {
         email: data.email,
         password: data.password,
         redirect: false,

@@ -1,6 +1,6 @@
 import z from 'zod';
 
-const serviceSchema = z.object({
+export const serviceSchema = z.object({
   description: z.string(),
   features: z.array(z.string()),
   id: z.number(),

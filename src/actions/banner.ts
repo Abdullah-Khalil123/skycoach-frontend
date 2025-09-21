@@ -1,6 +1,6 @@
 import { axiosInstance } from '@/utils/axios';
 
-const getBanners = async (params?: {}) => {
+const getBanners = async (params?: Record<string, string>) => {
   try {
     const response = await axiosInstance.get('/banners', params);
     return response.data;

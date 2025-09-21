@@ -1,6 +1,6 @@
 import z from 'zod';
 
-const bannerSchema = z.object({
+export const bannerSchema = z.object({
   id: z.number(),
   description: z.string().nullable(),
   image: z.string(),
