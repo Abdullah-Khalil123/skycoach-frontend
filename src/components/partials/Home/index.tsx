@@ -32,7 +32,7 @@ const HomePage = async () => {
       <CountsSection />
       <ReviewSection />
       <AllGames games={games} />
-      <MostWantedOffers />
+      {/* <MostWantedOffers /> */}
       <GiveAwaySection />
     </div>
   );
