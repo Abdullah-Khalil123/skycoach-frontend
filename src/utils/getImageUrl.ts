@@ -1,4 +1,4 @@
-export function getImageUrl(path?: string) {
+export function getImageUrl(path?: string | null) {
   if (!path) return '/placeholder.jpg';
 
   // prepend API storage base

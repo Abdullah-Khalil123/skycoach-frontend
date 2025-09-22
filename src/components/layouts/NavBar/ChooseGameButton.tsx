@@ -14,7 +14,7 @@ const ChooseGameButton = ({
       onClick={onClick}
       className={`flex cursor-pointer text-nowrap font-sans items-center gap-1 bg-primary px-4 py-3 text-base text-white font-medium rounded-md ${className}`}
     >
-      <p>Choose you game</p>
+      <p>Choose your game</p>
       <ChevronDown size={20} />
     </button>
   );

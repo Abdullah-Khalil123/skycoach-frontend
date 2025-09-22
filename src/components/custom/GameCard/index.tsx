@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Service } from '@/types/services';
+import { getImageUrl } from '@/utils/getImageUrl';
 
 const GameCard = ({
   service,
@@ -28,12 +29,22 @@ const GameCard = ({
 
         {/* Game icon */}
         <div className="absolute top-0 left-0">
-          <Image src={service.image ?? ''} alt="icon" width={40} height={40} />
+          <Image
+            src={getImageUrl(service.icon) ?? null}
+            alt="icon"
+            width={40}
+            height={40}
+          />
         </div>
         {/* Main image or placeholder */}
         <div className="relative text-white text-xl w-full h-full">
           {service.name}
-          <Image alt="game-image" src={'/bg.jpg'} fill objectFit="cover" />
+          <Image
+            alt="game-image"
+            src={getImageUrl(service.image) ?? '/bg.jpg'}
+            fill
+            objectFit="cover"
+          />
         </div>
       </div>
       <div className="px-4 pb-4 min-h-1/2 flex flex-col justify-between">
