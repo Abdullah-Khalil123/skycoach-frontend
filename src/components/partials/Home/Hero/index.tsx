@@ -5,9 +5,7 @@ import GameCard from './gameCard';
 import { getBanners } from '@/actions/banner';
 import { Banner } from '@/types/banner';
 
-const HeroPage = async () => {
-  const data = await getBanners();
-  const banners: Banner[] = data.data || [];
+const HeroPage = async ({ banners }: { banners: Banner[] }) => {
   return (
     <div>
       <HeroFilters />

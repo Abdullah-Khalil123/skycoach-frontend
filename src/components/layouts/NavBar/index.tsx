@@ -11,7 +11,7 @@ const NavBarComp = async () => {
   return (
     <div>
       <NavBar
-        navigation={navigation?.data?.[0] || []}
+        navigation={navigation?.data || []}
         services={services.data.all_services || []}
       />
     </div>

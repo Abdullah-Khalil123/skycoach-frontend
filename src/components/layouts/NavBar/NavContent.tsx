@@ -19,6 +19,7 @@ const NavContent = ({
 }) => {
   const [activeGame, setActiveGame] = useState<Game | null>(null); // State for the active game
 
+  console.log(navigation);
   useEffect(() => {
     if (navigation && navigation.length > 0) {
       setActiveGame(navigation[0]);
@@ -88,7 +89,7 @@ const NavContent = ({
                 <li key={game.id}>
                   <div
                     className={`flex md:pl-16 md:rounded-none items-center gap-2 p-2 rounded cursor-pointer ${
-                      activeGame?.id === game.id
+                      activeGame?.slug === game.slug
                         ? 'bg-gradient-to-r from-primary to-primary/90'
                         : 'hover:bg-gradient-to-r from-primary/20 to-primary/10'
                     }`}

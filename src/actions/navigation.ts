@@ -2,7 +2,7 @@ import { axiosInstance } from '@/utils/axios';
 
 const getNavigation = async () => {
   try {
-    const response = await axiosInstance.get('/navigation');
+    const response = await axiosInstance.get('/navigation/games-categories');
     return response.data;
   } catch (error) {
     console.log('Error fetching navigation data:', error);
