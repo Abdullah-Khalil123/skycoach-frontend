@@ -30,13 +30,13 @@ const GameCard = () => {
   );
 };
 
-const Badge = () => {
+const Badge = ({ title = 'Summer Sale' }: { title?: string }) => {
   return (
     <span className="flex items-center gap-2 bg-secondary/40 text-white text-xs px-1 py-1 rounded-full">
       <div className="flex justify-center items-center size-6 rounded-full bg-secondary/20">
         <Sun size={15} />
       </div>{' '}
-      <p>Summer Sale</p>
+      <p>{title}</p>
     </span>
   );
 };

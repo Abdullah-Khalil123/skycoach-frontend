@@ -15,7 +15,7 @@ const NavContent = ({
 }: {
   navigation: Navigation;
   services: Service[];
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setShow: (val: boolean) => void;
 }) => {
   const [activeGame, setActiveGame] = useState<Game | null>(null); // State for the active game
 

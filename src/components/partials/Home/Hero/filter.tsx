@@ -1,7 +1,7 @@
 import { Switch } from '@/components/ui/switch';
 import React from 'react';
 
-const filters = ['Skycoach Selection', 'Gold', 'Accounts', 'Summer Sale 25'];
+const filters = ['Skycoach Selection', 'Gold', 'Accounts'];
 
 const HeroFilters = () => {
   return (

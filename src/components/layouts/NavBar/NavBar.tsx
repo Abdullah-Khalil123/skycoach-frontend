@@ -23,6 +23,9 @@ import Link from 'next/link';
 import UserButton from './UserButton';
 import { Service } from '@/types/services';
 import { Navigation } from '@/types/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { setNav, toggleNav } from '@/store/slices/navSlice';
 
 const buttonStyles = `px-3 rounded cursor-pointer hover:bg-secondary py-2`;
 
@@ -33,7 +36,10 @@ const NavBar = ({
   navigation: Navigation;
   services: Service[];
 }) => {
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
+  const show = useSelector((state: RootState) => state.navSlice.isOpen);
 
   return (
     <div className="h-14 md:h-24 flex items-center justify-between px-margin fixed md:static top-0 left-0 right-0 bg-black z-50">
@@ -41,7 +47,7 @@ const NavBar = ({
       <div
         className="flex items-center md:hidden w-10"
         onClick={() => {
-          setShow((prev) => !prev);
+          dispatch(toggleNav());
         }}
       >
         {!show && <TextSearchIcon />}
@@ -61,7 +67,7 @@ const NavBar = ({
         </Link>
         <ChooseGameButton
           onClick={() => {
-            setShow(true);
+            dispatch(setNav(true));
           }}
         />
         <div className="flex items-center gap-1">
@@ -86,7 +92,7 @@ const NavBar = ({
 
       {/* Medium+ screen: Right section */}
       <div className="hidden md:flex items-center gap-4">
-        <div className={buttonStyles} onClick={() => setShow(true)}>
+        <div className={buttonStyles} onClick={() => dispatch(setNav(true))}>
           <Search />
         </div>
         <div className={buttonStyles}>
@@ -103,7 +109,7 @@ const NavBar = ({
         {show ? (
           <Cross
             onClick={() => {
-              setShow(false);
+              dispatch(setNav(false));
             }}
           />
         ) : (
@@ -121,12 +127,12 @@ const NavBar = ({
           >
             <div
               onClick={() => {
-                setShow(false);
+                dispatch(setNav(false));
               }}
               className="absolute w-full h-screen backdrop-blur-md bg-black/30"
             />
             <NavContent
-              setShow={setShow}
+              setShow={(val) => dispatch(setNav(val))}
               services={services}
               navigation={navigation}
             />

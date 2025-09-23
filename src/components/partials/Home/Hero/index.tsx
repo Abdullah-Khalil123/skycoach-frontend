@@ -2,12 +2,12 @@ import React from 'react';
 import HeroFilters from './filter';
 import CardSwiper from './cardSwiper';
 import GameCard from './gameCard';
-import { getBanners } from '@/actions/banner';
 import { Banner } from '@/types/banner';
+import ViewAllGamesButton from './ViewAllGamesButton';
 
 const HeroPage = async ({ banners }: { banners: Banner[] }) => {
   return (
-    <div>
+    <div className="relative">
       <HeroFilters />
       <div
         className="
@@ -34,6 +34,7 @@ const HeroPage = async ({ banners }: { banners: Banner[] }) => {
           <GameCard key={index} />
         ))}
       </div>
+      <ViewAllGamesButton />
     </div>
   );
 };
