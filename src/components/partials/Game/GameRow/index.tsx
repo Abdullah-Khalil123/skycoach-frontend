@@ -2,8 +2,8 @@ import ServiceCard from '@/components/custom/ServiceCard';
 import ViewMore from './viewMore';
 import React from 'react';
 import { Service } from '@/types/services';
-import Link from 'next/link';
 import { Category } from '@/types/category';
+import Link from 'next/link';
 
 const GameRow = ({
   data,
@@ -18,16 +18,7 @@ const GameRow = ({
 
   return (
     <div className="mb-8">
-      <Link
-        href={
-          category?.slug !== 'hot-services'
-            ? '/' + gameSlug + '/' + category?.slug
-            : ''
-        }
-        className="inline-block"
-      >
-        <h2 className="font-semibold text-2xl my-4">{category?.name}</h2>
-      </Link>
+      <h2 className="font-semibold text-2xl my-4">{category?.name}</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
         {/* Mobile: show all items and ViewMore */}
@@ -70,7 +61,9 @@ const GameRow = ({
         {/* ViewMore on md+ if more items */}
         {hasMore && (
           <div className="hidden md:block">
-            <ViewMore />
+            <Link href={`${category?.slug ? category?.slug : ''}`}>
+              <ViewMore />
+            </Link>
           </div>
         )}
 

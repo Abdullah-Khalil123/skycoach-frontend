@@ -1,5 +1,4 @@
 // HotNowSection.tsx
-import { getHotServices } from '@/actions/services';
 import HotNowClient from './HotNowClient';
 import { Service } from '@/types/services';
 

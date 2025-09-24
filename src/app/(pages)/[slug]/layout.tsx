@@ -2,11 +2,14 @@ import SideNav from '@/components/layouts/SideNav';
 import React from 'react';
 import Image from 'next/image';
 
-const layout = ({
+const layout = async ({
   children,
+  params,
 }: Readonly<{
+  params: Promise<{ slug: string }>;
   children: React.ReactNode;
 }>) => {
+  const { slug } = await params;
   return (
     <>
       <div className="flex">
@@ -21,7 +24,7 @@ const layout = ({
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
           </div>
         </div>
-        <SideNav />
+        <SideNav gameSlug={slug} />
         <div className="min-w-64">{children}</div>
       </div>
     </>

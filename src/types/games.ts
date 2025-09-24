@@ -1,6 +1,6 @@
 import z from 'zod';
 import { CategorySchema } from './navigation';
-import { ServiceSchema } from './service';
+import { serviceSchema } from './services';
 
 export const GameSchema = z.object({
   id: z.number(),
@@ -14,6 +14,6 @@ export const GameSchema = z.object({
   tag: z.string(),
   categories: z.array(CategorySchema),
   icon: z.string().optional(),
-  services: z.array(ServiceSchema),
+  services: z.array(serviceSchema),
 });
 export type Game = z.infer<typeof GameSchema>;

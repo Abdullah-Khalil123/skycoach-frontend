@@ -3,7 +3,7 @@ import GameViewPage from '@/components/partials/Game';
 import { ServicesByGames } from '@/types/services';
 import React from 'react';
 
-const GamePage = async ({ params }: { params: { slug: string } }) => {
+const GamePage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug: gameSlug } = await params;
   const data = await getServicesByGame(gameSlug);
   const services: ServicesByGames = data?.data || {};

@@ -8,6 +8,8 @@ import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ReviewCard from './reviewCard';
 import SwiperCore from 'swiper';
+import { getReviews } from '@/actions/review';
+import { Review } from '@/types/review';
 
 const breakpoints = {
   0: {
@@ -24,7 +26,7 @@ const breakpoints = {
   },
 };
 
-const ReviewSection = () => {
+const ReviewSection = ({ reviews }: { reviews: Review[] }) => {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   return (
@@ -68,9 +70,9 @@ const ReviewSection = () => {
           loop={true}
           breakpoints={breakpoints}
         >
-          {[1, 2, 3, 4, 5, 6, 7].map((num) => (
-            <SwiperSlide key={num}>
-              <ReviewCard />
+          {reviews.map((review, idx) => (
+            <SwiperSlide key={idx}>
+              <ReviewCard review={review} />
             </SwiperSlide>
           ))}
         </Swiper>

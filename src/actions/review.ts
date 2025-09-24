@@ -1,6 +1,6 @@
 import { axiosInstance } from '@/utils/axios';
 
-const getReviews = async (params: Record<string, string>) => {
+const getReviews = async (params?: Record<string, string>) => {
   try {
     const response = await axiosInstance.get('/reviews', params);
     return response.data;

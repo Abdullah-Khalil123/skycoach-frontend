@@ -24,7 +24,7 @@ const GameViewPage = ({
             data={services?.hot_services}
             gameSlug={gameSlug}
             category={
-              { name: 'Hot Services', slug: 'hot-services', id: 0 } as Category
+              { name: 'Hot Services', slug: null, id: 0 } as unknown as Category
             }
           />
         )}
