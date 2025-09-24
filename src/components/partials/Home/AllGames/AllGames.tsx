@@ -94,7 +94,7 @@ export default function AllGames({
         >
           {visibleGames.map((game, index) => (
             <Link
-              href={`${game.name.toLowerCase().replace(/\s+/g, '-')}`}
+              href={`${game.slug}`}
               key={index}
               className="flex gap-2 bg-secondary-foreground px-4 py-2 rounded-md
               hover:bg-secondary-foreground transition-colors

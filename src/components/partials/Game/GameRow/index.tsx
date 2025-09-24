@@ -1,34 +1,39 @@
 import ServiceCard from '@/components/custom/ServiceCard';
 import ViewMore from './viewMore';
 import React from 'react';
-
-type GameRowProps = {
-  title: string;
-  category: string;
-  features: string[];
-  price: number | null;
-};
+import { Service } from '@/types/services';
+import Link from 'next/link';
+import { Category } from '@/types/category';
 
 const GameRow = ({
   data,
-  title,
-  slug,
+  category,
+  gameSlug,
 }: {
-  data: GameRowProps[];
-  title: string;
-  slug: string;
+  data: Service[];
+  category?: Category;
+  gameSlug: string;
 }) => {
   const hasMore = data.length > 5;
 
   return (
     <div className="mb-8">
-      <h2 className="font-semibold text-2xl my-4">{title}</h2>
+      <Link
+        href={
+          category?.slug !== 'hot-services'
+            ? '/' + gameSlug + '/' + category?.slug
+            : ''
+        }
+        className="inline-block"
+      >
+        <h2 className="font-semibold text-2xl my-4">{category?.name}</h2>
+      </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
         {/* Mobile: show all items and ViewMore */}
         <div className="md:hidden space-y-4">
           {data.slice(0, 4).map((item, index) => (
-            <ServiceCard key={index} item={item} slug={slug} />
+            <ServiceCard key={index} item={item} slug={gameSlug} />
           ))}
           {hasMore && <ViewMore />}
         </div>
@@ -37,28 +42,28 @@ const GameRow = ({
         {/* 1st item always */}
         {data[0] && (
           <div className="hidden md:block">
-            <ServiceCard item={data[0]} slug={slug} />
+            <ServiceCard item={data[0]} slug={gameSlug} />
           </div>
         )}
 
         {/* 2nd on md+ */}
         {data[1] && (
           <div className="hidden md:block">
-            <ServiceCard item={data[1]} slug={slug} />
+            <ServiceCard item={data[1]} slug={gameSlug} />
           </div>
         )}
 
         {/* 3rd on xl+ */}
         {data[2] && (
           <div className="hidden xl:block">
-            <ServiceCard item={data[2]} slug={slug} />
+            <ServiceCard item={data[2]} slug={gameSlug} />
           </div>
         )}
 
         {/* 4th on 2xl+ */}
         {data[3] && (
           <div className="hidden 2xl:block">
-            <ServiceCard item={data[3]} slug={slug} />
+            <ServiceCard item={data[3]} slug={gameSlug} />
           </div>
         )}
 
@@ -72,7 +77,7 @@ const GameRow = ({
         {/* Show 5th item on 2xl+ only if not showing ViewMore */}
         {!hasMore && data[4] && (
           <div className="hidden 2xl:block">
-            <ServiceCard item={data[4]} slug={slug} />
+            <ServiceCard item={data[4]} slug={gameSlug} />
           </div>
         )}
       </div>

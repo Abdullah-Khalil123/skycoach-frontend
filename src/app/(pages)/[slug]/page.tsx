@@ -1,11 +1,15 @@
+import { getServicesByGame } from '@/actions/services';
 import GameViewPage from '@/components/partials/Game';
-import React, { use } from 'react';
+import { ServicesByGames } from '@/types/services';
+import React from 'react';
 
-const GamePage = ({ params }: { params: Promise<{ slug: string }> }) => {
-  const { slug } = use(params);
+const GamePage = async ({ params }: { params: { slug: string } }) => {
+  const { slug: gameSlug } = await params;
+  const data = await getServicesByGame(gameSlug);
+  const services: ServicesByGames = data?.data || {};
   return (
     <div>
-      <GameViewPage slug={slug} />
+      <GameViewPage gameSlug={gameSlug} services={services} />
     </div>
   );
 };

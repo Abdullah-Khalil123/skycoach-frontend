@@ -4,8 +4,16 @@ import CardSwiper from './cardSwiper';
 import GameCard from './gameCard';
 import { Banner } from '@/types/banner';
 import ViewAllGamesButton from './ViewAllGamesButton';
+import { Game } from '@/types/games';
 
-const HeroPage = async ({ banners }: { banners: Banner[] }) => {
+const HeroPage = async ({
+  banners,
+  games,
+}: {
+  banners: Banner[];
+  games: Game[];
+}) => {
+  console.log(games);
   return (
     <div className="relative">
       <HeroFilters />
@@ -30,8 +38,8 @@ const HeroPage = async ({ banners }: { banners: Banner[] }) => {
           <CardSwiper banners={banners} />
         </div>
 
-        {Array.from({ length: 14 }).map((_, index) => (
-          <GameCard key={index} />
+        {Array.from({ length: 14 }, (_, i) => (
+          <GameCard key={i} game={games[i % games.length]} />
         ))}
       </div>
       <ViewAllGamesButton />

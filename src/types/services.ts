@@ -1,4 +1,6 @@
 import z from 'zod';
+import { GameSchema } from './games';
+import { categorySchema } from './category';
 
 export const serviceSchema = z.object({
   description: z.string(),
@@ -14,3 +16,32 @@ export const serviceSchema = z.object({
 });
 
 export type Service = z.infer<typeof serviceSchema>;
+
+export const servicesByGamesSchema = z.object({
+  game: GameSchema.optional(),
+  hot_services: z.array(serviceSchema).optional(),
+  services_by_category: z
+    .array(
+      z.object({
+        category: z.object({
+          id: z.number(),
+          name: z.string(),
+          slug: z.string(),
+          icon: z.string().nullable(),
+          sort: z.number().nullable(),
+        }),
+        services: z.array(serviceSchema),
+      })
+    )
+    .optional(),
+});
+
+export type ServicesByGames = z.infer<typeof servicesByGamesSchema>;
+
+export const servicesByCategorySchema = z.object({
+  category: categorySchema.optional(),
+  game: GameSchema.optional(),
+  services: z.array(serviceSchema).optional(),
+});
+
+export type ServicesByCategory = z.infer<typeof servicesByCategorySchema>;

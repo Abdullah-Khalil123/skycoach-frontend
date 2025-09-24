@@ -2,102 +2,23 @@ import React from 'react';
 import ServiceCard from '@/components/custom/ServiceCard';
 import GameViewHeader from '../Game/GameTitle';
 import BreadCrumbs from '@/components/custom/breadcrumb';
+import { ServicesByCategory } from '@/types/services';
 
-type ServiceCardProps = {
-  title: string;
-  features: string[];
-  price: number | null;
-};
+// type ServiceCardProps = {
+//   title: string;
+//   features: string[];
+//   price: number | null;
+// };
 
-const data: ServiceCardProps[] = [
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-  {
-    features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
-    price: 9.49,
-    title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
-  },
-];
+// const data: ServiceCardProps[] = [
+//   {
+//     features: ['Guaranteed Badges', 'Fast Completion', 'Fair Price'],
+//     price: 9.49,
+//     title: "4000 Damage + 20 Kills (Legend's Wake) Bundle",
+//   },
+// ];
 
-const SubGame = () => {
+const SubGame = ({ services }: { services: ServicesByCategory }) => {
   return (
     <div className="px-margin">
       <div className="md:mb-4" />
@@ -113,7 +34,7 @@ const SubGame = () => {
         guaranteed results.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-        {data.map((item, index) => (
+        {services?.services?.map((item, index) => (
           <ServiceCard key={index} item={item} slug={'product'} />
         ))}
       </div>

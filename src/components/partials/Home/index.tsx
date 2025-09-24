@@ -7,7 +7,7 @@ import GiveAwaySection from './GiveAway';
 import ReviewSection from './Reviews';
 import CountsSection from './Counts';
 import BoostYouSection from './Boost';
-import { getAllActiveGames } from '@/actions/games';
+import { getAllActiveGames, getHomePageGames } from '@/actions/games';
 import { Game } from '@/types/games';
 import { getBanners } from '@/actions/banner';
 import { Banner } from '@/types/banner';
@@ -15,18 +15,21 @@ import { getHotServices } from '@/actions/services';
 import { Service } from '@/types/services';
 
 const HomePage = async () => {
-  const [bannerData, gameData, seviceData] = await Promise.all([
+  const [bannerData, gameData, seviceData, hotGamesData] = await Promise.all([
     getBanners(),
     getAllActiveGames(),
     getHotServices(),
+    getHomePageGames(),
   ]);
 
   const banners: Banner[] = bannerData.data || [];
   const games: Game[] = gameData.data.games || [];
   const services: Service[] = seviceData.data.all_services || [];
+  const hotGames: Game[] = hotGamesData.data || [];
+
   return (
     <div>
-      <Hero banners={banners} />
+      <Hero banners={banners} games={hotGames} />
       <HotNowSection services={services} />
       <BoostYouSection />
       <CountsSection />

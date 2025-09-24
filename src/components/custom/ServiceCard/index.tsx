@@ -2,24 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import { Dot } from 'lucide-react';
 import Link from 'next/link';
+import { Service } from '@/types/services';
+import { getImageUrl } from '@/utils/getImageUrl';
 // import ServiceCardLinkWrapper from '../ServiceCardLinkWrapper';
 
-type ServiceCardProps = {
-  title: string;
-  features: string[];
-  price: number | null;
-};
-
-const ServiceCard = ({
-  item,
-  slug,
-}: {
-  item: ServiceCardProps;
-  slug: string;
-}) => {
+const ServiceCard = ({ item, slug }: { item: Service; slug: string }) => {
   return (
     <Link
-      href={`${slug}/${item.title.toLowerCase().replaceAll(' ', '-')}`}
+      href={`${slug}/product/${item.url?.split('/').pop()}`}
       className={'min-h-82 flex flex-col'}
     >
       <div className="flex flex-col bg-secondary min-h-82 rounded-2xl overflow-hidden group cursor-pointer">
@@ -28,12 +18,12 @@ const ServiceCard = ({
           <Image
             alt="service image"
             className="grayscale"
-            src={'/bg.jpg'}
+            src={getImageUrl(item?.image) || '/bg.jpg'}
             fill
             objectFit="cover"
           />
           <Image
-            src={'/globe.svg'}
+            src={getImageUrl(item?.image) || '/globe.svg'}
             alt="svg"
             fill
             objectFit="contain"
@@ -46,11 +36,11 @@ const ServiceCard = ({
         <div className="h-1/2 bg-secondary md:min-h-42 md:max-h-42 md:h-2/3 flex flex-col justify-between px-4 pb-4 z-20">
           <div>
             <h2 className="text-xl font-semibold mb-2 md:line-clamp-2 text-ellipsis -mt-8">
-              {item.title}
+              {item.name}
             </h2>
 
             <ul className="mb-4">
-              {item.features.map((feature: string, index: number) => (
+              {item?.features?.map((feature: string, index: number) => (
                 <li className="flex items-start text-xs" key={index}>
                   <Dot color="#21c11c" size={20} strokeWidth={4} />
                   <span>{feature}</span>
@@ -62,11 +52,11 @@ const ServiceCard = ({
           {/* Price */}
           <div className="flex justify-between">
             <p className="text-lg font-bold flex items-center">
-              {item.price == null && 'Free'}
-              {item.price != null && (
+              {item.start_price == null && 'Free'}
+              {item.start_price != null && (
                 <>
-                  {'$' + String(item.price).split('.')[0]}
-                  <sup>{String(item.price).split('.')[1] ?? '00'}</sup>
+                  {'$' + String(item.start_price).split('.')[0]}
+                  <sup>{String(item.start_price).split('.')[1] ?? '00'}</sup>
                 </>
               )}
             </p>

@@ -1,14 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
 import { Sun } from 'lucide-react';
+import { Game } from '@/types/games';
+import { getImageUrl } from '@/utils/getImageUrl';
 
-const GameCard = () => {
+const GameCard = ({ game }: { game: Game }) => {
   return (
     <div className="relative rounded-4xl overflow-hidden lg:h-40">
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
 
       <h3 className="z-10 flex flex-col absolute top-1/2 -translate-y-1/2 px-4 font-medium">
-        World of Warcraft
+        {game.name}
         <Badge />
       </h3>
       <Badge />
@@ -20,7 +22,7 @@ const GameCard = () => {
       {/*  */}
 
       <Image
-        src={'/bg.jpg'}
+        src={getImageUrl(game.background_image) ?? null}
         alt="Game Image"
         fill
         objectFit="cover"
