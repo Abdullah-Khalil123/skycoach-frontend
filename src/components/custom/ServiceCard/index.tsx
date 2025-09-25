@@ -6,10 +6,25 @@ import { Service } from '@/types/services';
 import { getImageUrl } from '@/utils/getImageUrl';
 // import ServiceCardLinkWrapper from '../ServiceCardLinkWrapper';
 
-const ServiceCard = ({ item, slug }: { item: Service; slug: string }) => {
+const ServiceCard = ({
+  item,
+  gameSlug,
+  subGame = false,
+}: {
+  item: Service;
+  gameSlug: string;
+  subGame?: boolean;
+}) => {
   return (
     <Link
-      href={`${slug}/product/${item.url?.split('/').pop()}`}
+      href={
+        subGame
+          ? '/' + gameSlug + item.url
+          : item.url ||
+            `${gameSlug}/services/${item.name
+              ?.toLowerCase()
+              .replace(/\s+/g, '-')}`
+      }
       className={'min-h-82 flex flex-col'}
     >
       <div className="flex flex-col bg-secondary min-h-82 rounded-2xl overflow-hidden group cursor-pointer">

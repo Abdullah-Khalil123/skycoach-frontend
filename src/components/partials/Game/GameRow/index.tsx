@@ -24,7 +24,7 @@ const GameRow = ({
         {/* Mobile: show all items and ViewMore */}
         <div className="md:hidden space-y-4">
           {data.slice(0, 4).map((item, index) => (
-            <ServiceCard key={index} item={item} slug={gameSlug} />
+            <ServiceCard key={index} item={item} gameSlug={gameSlug} />
           ))}
           {hasMore && <ViewMore />}
         </div>
@@ -33,28 +33,28 @@ const GameRow = ({
         {/* 1st item always */}
         {data[0] && (
           <div className="hidden md:block">
-            <ServiceCard item={data[0]} slug={gameSlug} />
+            <ServiceCard item={data[0]} gameSlug={gameSlug} />
           </div>
         )}
 
         {/* 2nd on md+ */}
         {data[1] && (
           <div className="hidden md:block">
-            <ServiceCard item={data[1]} slug={gameSlug} />
+            <ServiceCard item={data[1]} gameSlug={gameSlug} />
           </div>
         )}
 
         {/* 3rd on xl+ */}
         {data[2] && (
           <div className="hidden xl:block">
-            <ServiceCard item={data[2]} slug={gameSlug} />
+            <ServiceCard item={data[2]} gameSlug={gameSlug} />
           </div>
         )}
 
         {/* 4th on 2xl+ */}
         {data[3] && (
           <div className="hidden 2xl:block">
-            <ServiceCard item={data[3]} slug={gameSlug} />
+            <ServiceCard item={data[3]} gameSlug={gameSlug} />
           </div>
         )}
 
@@ -70,7 +70,7 @@ const GameRow = ({
         {/* Show 5th item on 2xl+ only if not showing ViewMore */}
         {!hasMore && data[4] && (
           <div className="hidden 2xl:block">
-            <ServiceCard item={data[4]} slug={gameSlug} />
+            <ServiceCard item={data[4]} gameSlug={gameSlug} />
           </div>
         )}
       </div>

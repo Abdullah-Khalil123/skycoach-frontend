@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ReviewCard from './reviewCard';
 import SwiperCore from 'swiper';
@@ -26,8 +26,17 @@ const breakpoints = {
   },
 };
 
-const ReviewSection = ({ reviews }: { reviews: Review[] }) => {
+const ReviewSection = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const reviewData = await getReviews({ limit: '10' });
+      setReviews(reviewData.data || []);
+    };
+    fetchReviews();
+  }, []);
 
   return (
     <section className="mt-8 md:bg-secondary rounded-4xl md:p-8">

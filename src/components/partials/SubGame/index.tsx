@@ -35,7 +35,12 @@ const SubGame = ({ services }: { services: ServicesByCategory }) => {
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
         {services?.services?.map((item, index) => (
-          <ServiceCard key={index} item={item} slug={'product'} />
+          <ServiceCard
+            key={index}
+            item={item}
+            gameSlug={services.game?.slug as string}
+            subGame={true}
+          />
         ))}
       </div>
     </div>

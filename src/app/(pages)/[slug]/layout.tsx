@@ -20,6 +20,7 @@ const layout = async ({
               src="/game-list-bg.jpg"
               fill
               className="object-cover"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
           </div>

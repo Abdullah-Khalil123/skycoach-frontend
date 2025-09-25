@@ -17,22 +17,17 @@ import { getReviews } from '@/actions/review';
 import { Review } from '@/types/review';
 
 const HomePage = async () => {
-  const [bannerData, gameData, seviceData, hotGamesData, reviewData] =
-    await Promise.all([
-      getBanners(),
-      getAllActiveGames(),
-      getHotServices(),
-      getHomePageGames(),
-      getReviews({
-        limit: '10',
-      }),
-    ]);
+  const [bannerData, gameData, seviceData, hotGamesData] = await Promise.all([
+    getBanners(),
+    getAllActiveGames(),
+    getHotServices(),
+    getHomePageGames(),
+  ]);
 
   const banners: Banner[] = bannerData.data || [];
   const games: Game[] = gameData.data.games || [];
   const services: Service[] = seviceData.data.all_services || [];
   const hotGames: Game[] = hotGamesData.data || [];
-  const reviews: Review[] = reviewData.data || [];
 
   return (
     <div>
@@ -40,7 +35,7 @@ const HomePage = async () => {
       <HotNowSection services={services} />
       <BoostYouSection />
       <CountsSection />
-      <ReviewSection reviews={reviews} />
+      <ReviewSection />
       <AllGames games={games} />
       {/* <MostWantedOffers /> */}
       <GiveAwaySection />
