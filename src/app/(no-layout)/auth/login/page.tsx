@@ -1,10 +1,15 @@
 import AuthLayout from '../AuthLayout';
 import Login from '@/components/partials/Login';
 
-export default function LoginPage() {
+import { getProviderList } from '@/actions/auth';
+import { AuthProvider } from '@/types/authProviders';
+
+export default async function LoginPage() {
+  const data = await getProviderList();
+  const providers: AuthProvider[] = data.data;
   return (
     <AuthLayout>
-      <Login />
+      <Login providers={providers} />
     </AuthLayout>
   );
 }

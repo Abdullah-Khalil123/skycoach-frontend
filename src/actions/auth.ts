@@ -36,4 +36,13 @@ const register = async ({
   }
 };
 
-export { login, register };
+const getProviderList = async () => {
+  try {
+    const response = await axiosInstance.get('/auth/social/providers');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { login, register, getProviderList };

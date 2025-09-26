@@ -19,7 +19,6 @@ const NavContent = ({
 }) => {
   const [activeGame, setActiveGame] = useState<Game | null>(null); // State for the active game
 
-  console.log(navigation);
   useEffect(() => {
     if (navigation && navigation.length > 0) {
       setActiveGame(navigation[0]);
